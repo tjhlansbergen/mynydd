@@ -1,7 +1,32 @@
-﻿@page "/"
+﻿@using Microsoft.AspNetCore.Identity.Data
 
-<PageTitle>Home</PageTitle>
+@rendermode InteractiveServer
+@page "/"
 
-<h1>Hello, world!</h1>
+@inject IConfiguration Configuration
 
-Welcome to your new app.
+
+<PageTitle>Mynydd</PageTitle>
+
+@if (_loggedIn)
+{
+    <p>You are logged in!</p>
+}
+else
+{
+    <input type="password" @onchange="OnKeyDown"/>
+}   
+
+@code {
+
+    private bool _loggedIn = false;
+    private string _token = string.Empty;
+
+    private async Task OnKeyDown(ChangeEventArgs e)
+    {
+        if (e.Value?.ToString() == Configuration["Mynydd:LoginToken"])
+        {
+            _loggedIn = true;
+        }        
+    }
+}
