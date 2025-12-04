@@ -12,7 +12,7 @@
 
 @if (_loggedIn)
 {
-    
+    <InputTextArea @bind-Value="_text" />
 }
 else
 {
@@ -22,7 +22,7 @@ else
 @code {
 
     private bool _loggedIn = false;
-    private string _token = string.Empty;
+    private string _text = string.Empty;
 
     private async Task OnKeyDown(ChangeEventArgs e)
     {
