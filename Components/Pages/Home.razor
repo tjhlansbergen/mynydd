@@ -3,14 +3,16 @@
 @rendermode InteractiveServer
 @page "/"
 
+
 @inject IConfiguration Configuration
+@inject mynydd.Services.DataStore DataStore
 
 
 <PageTitle>Mynydd</PageTitle>
 
 @if (_loggedIn)
 {
-    <p>You are logged in!</p>
+    
 }
 else
 {

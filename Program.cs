@@ -1,10 +1,14 @@
 using mynydd.Components;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Register DataStore service
+builder.Services.AddSingleton<mynydd.Services.DataStore>();
 
 var app = builder.Build();
 
