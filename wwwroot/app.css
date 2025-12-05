@@ -1,4 +1,4 @@
-textarea, .input-textarea {
+textarea#main-textarea {
   background: #222;
   color: #e0e0e0;
   border: 0.5px solid #888;
@@ -16,7 +16,7 @@ textarea, .input-textarea {
   box-sizing: border-box;
 }
 
-textarea:focus, .input-textarea:focus {
+textarea#main-textarea:focus {
   outline: none;
   border-color: #888;
 }
