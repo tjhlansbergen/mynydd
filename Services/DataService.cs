@@ -29,6 +29,17 @@ public class DataStore
 
         var collection = db.GetCollection<Note>(name);
 
+        // Enforce limit of 5 notes - delete oldest notes if we have more than 4
+        var currentNotes = collection.FindAll()
+                                    .OrderBy(n => n.TimestampUtc)
+                                    .ToList();
+        
+        while (currentNotes.Count > 4)
+        {
+            collection.Delete(currentNotes[0].Id);
+            currentNotes.RemoveAt(0);
+        }
+
         collection.Insert(new Note
         {
             Text = text,
