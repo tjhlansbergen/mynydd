@@ -110,7 +110,7 @@ body {
   margin: 0;
   background: #181a1b;
   color: #e0e0e0;
-  font-family: system-ui, sans-serif;
+  font-family: 'Fira Mono', 'JetBrains Mono', 'Menlo', 'Consolas', 'Liberation Mono', 'monospace';
   display: flex;
   align-items: center;
   justify-content: center;

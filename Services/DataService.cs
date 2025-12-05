@@ -13,7 +13,9 @@ public class DataStore
     {
         using var db = new LiteDatabase(connection);
         var collection = db.GetCollection<Note>(name);
-        return collection.FindAll().ToList();
+        return collection.FindAll()
+                        .OrderByDescending(i => i.TimestampUtc)
+                        .ToList();
     }
 
     public void InsertNote(string text)

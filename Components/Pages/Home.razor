@@ -32,12 +32,20 @@
 }
 else
 {
-    <input type="password" @onchange="OnKeyDown"/>
+    <input type="password" @ref="_passwordInput" @onchange="OnKeyDown" />
 }   
 
 @code {
+    private ElementReference _passwordInput;
 
     private bool _loggedIn = false;
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            if (firstRender && !_loggedIn)
+            {
+                await _passwordInput.FocusAsync();
+            }
+        }
     private string _text = string.Empty;
     private List<mynydd.Models.Note> _notes = new();
     private mynydd.Models.Note? _selectedNote = null;
@@ -60,8 +68,22 @@ else
 
     private void OnSaveClick()
     {
-        DataStore.InsertNote(_text);
+        if (_selectedNote != null)
+        {
+            // Update existing note
+            DataStore.UpdateNote(_selectedNote.Id, _text);
+        }
+        else
+        {
+            // Insert new note
+            DataStore.InsertNote(_text);
+        }
         _notes = DataStore.GetAllNotes();
+        // Refresh selected note reference if editing
+        if (_selectedNote != null)
+        {
+            _selectedNote = _notes.FirstOrDefault(n => n.Id == _selectedNote.Id);
+        }
         StateHasChanged();
     }
 
