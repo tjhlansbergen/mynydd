@@ -13,6 +13,15 @@
 @if (_loggedIn)
 {
     <div id="main-container">
+        <div id="main-list">
+            @foreach (var note in _notes)
+            {
+                var selected = _selectedNote != null && note.TimestampUtc == _selectedNote.TimestampUtc && note.Text == _selectedNote.Text;
+                <a href="#" class="note-timestamp@(selected ? " selected" : null)" @onclick="() => OnNoteClick(note)">
+                    @note.TimestampUtc.ToString("yy-MM-dd HH:mm:ss")
+                </a>
+            }
+        </div>
         <InputTextArea id="main-textarea" @bind-Value="_text" />
         <div id="main-actions">
             <a id="action-new" href="#" @onclick="OnNewClick">New</a>
@@ -30,27 +39,40 @@ else
 
     private bool _loggedIn = false;
     private string _text = string.Empty;
+    private List<mynydd.Models.Note> _notes = new();
+    private mynydd.Models.Note? _selectedNote = null;
 
     private async Task OnKeyDown(ChangeEventArgs e)
     {
         if (e.Value?.ToString() == Configuration["Mynydd:LoginToken"])
         {
             _loggedIn = true;
-        }        
+            _notes = DataStore.GetAllNotes();
+            StateHasChanged();
+        }
     }
 
     private void OnNewClick()
     {
-        // TODO: Add logic for New
+        _selectedNote = null;
+        _text = string.Empty;
     }
 
     private void OnSaveClick()
     {
         DataStore.InsertNote(_text);
+        _notes = DataStore.GetAllNotes();
+        StateHasChanged();
     }
 
     private void OnDeleteClick()
     {
         // TODO: Add logic for Delete
+    }
+
+    private void OnNoteClick(mynydd.Models.Note note)
+    {
+        _selectedNote = note;
+        _text = note.Text;
     }
 }
