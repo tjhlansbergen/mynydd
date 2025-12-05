@@ -1,3 +1,41 @@
+/* Center the main container and align items horizontally */
+#main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Style the actions column to the right of textarea */
+#main-actions {
+  display: flex;
+  flex-direction: column;
+  margin-left: 1rem;
+}
+
+#action-new, #action-save {
+  color: #7da2ff;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+#action-new:hover, #action-save:hover {
+  color: #b3d1ff;
+}
+
+#action-delete {
+  color: #ff4444;
+  text-decoration: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+#action-delete:hover {
+  color: #ff8888;
+}
 textarea#main-textarea {
   background: #222;
   color: #e0e0e0;

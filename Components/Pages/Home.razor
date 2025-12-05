@@ -12,7 +12,14 @@
 
 @if (_loggedIn)
 {
-    <InputTextArea id="main-textarea" @bind-Value="_text" />
+    <div id="main-container">
+        <InputTextArea id="main-textarea" @bind-Value="_text" />
+        <div id="main-actions">
+            <a id="action-new" href="#" @onclick="OnNewClick">New</a>
+            <a id="action-save" href="#" @onclick="OnSaveClick">Save</a>
+            <a id="action-delete" href="#" @onclick="OnDeleteClick">Delete</a>
+        </div>
+    </div>
 }
 else
 {
@@ -30,5 +37,20 @@ else
         {
             _loggedIn = true;
         }        
+    }
+
+    private void OnNewClick()
+    {
+        // TODO: Add logic for New
+    }
+
+    private void OnSaveClick()
+    {
+        DataStore.InsertNote(_text);
+    }
+
+    private void OnDeleteClick()
+    {
+        // TODO: Add logic for Delete
     }
 }
