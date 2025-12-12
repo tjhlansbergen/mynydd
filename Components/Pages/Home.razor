@@ -52,7 +52,7 @@ else
 
     private async Task OnKeyDown(ChangeEventArgs e)
     {
-        if (e.Value?.ToString() == Configuration["Mynydd:LoginToken"])
+        if (e.Value?.ToString() == Configuration["LoginToken"])
         {
             _loggedIn = true;
             _notes = DataStore.GetAllNotes();
