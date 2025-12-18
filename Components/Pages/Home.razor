@@ -89,7 +89,14 @@ else
 
     private void OnDeleteClick()
     {
-        // TODO: Add logic for Delete
+        if (_selectedNote != null)
+        {
+            DataStore.DeleteNote(_selectedNote.Id);
+            _notes = DataStore.GetAllNotes();
+            _selectedNote = null;
+            _text = string.Empty;
+            StateHasChanged();
+        }
     }
 
     private void OnNoteClick(mynydd.Models.Note note)
