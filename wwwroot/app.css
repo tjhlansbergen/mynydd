@@ -143,3 +143,37 @@ input[type="password"] {
 input[type="password"]:focus {
   outline: 1px solid #A78BFA;
 }
+
+/* Portrait/vertical viewport layout */
+@media (orientation: portrait) {
+  #main-container {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  #main-list {
+    margin-right: 0;
+    margin-bottom: 1rem;
+    align-items: center;
+    min-width: auto;
+    width: 100%;
+  }
+
+  textarea#main-textarea {
+    margin: 0 auto 1rem;
+    width: 100%;
+    min-width: auto;
+  }
+
+  #main-actions {
+    margin-left: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #action-new, #action-save {
+    margin-bottom: 0;
+  }
+}
