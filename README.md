@@ -5,7 +5,9 @@ URL: https://mynydd.azurewebsites.net/
 # Stack
 dotnet 10 / Blazor with Server-Side interactive Razor components running on Azure.
 
-<img width="2002" height="1434" alt="image" src="https://github.com/user-attachments/assets/3163d9a8-7a17-42fd-9e20-44b1650a0b4b" />
+<img width="1392" height="916" alt="image" src="https://github.com/user-attachments/assets/74a1fdd3-3991-42f0-b8da-7c80b812ce4c" />
+
+
 
 
 
